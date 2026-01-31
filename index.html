@@ -403,13 +403,22 @@ footer{text-align:center;padding:30px;opacity:.6}
 <section class="hero" id="home">
   <div class="reveal">
     <h1>Ľudová hudba Tomáša Boráka</h1>
-    <p>Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá, odobierky, recepcie, firemné večierky, rauty a iné.</p>
+    <p>
+      Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá,
+      odobierky, recepcie, firemné večierky, rauty a iné.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">Kontaktujte nás</a>
+      <a href="https://www.facebook.com/lhtomasaboraka/" 
+         target="_blank"
+         class="btn btn-secondary">
+         Sledujte nás na Facebooku
+      </a>
+    </div>
   </div>
-  <div class="hero-buttons">
-  <a href="#contact" class="btn btn-primary">Kontaktujte nás</a>
-  <a href="#gallery" class="btn btn-secondary">Sledujte nás na facebooku</a>
-</div>
 </section>
+
 
 <section id="about">
   <div class="reveal">
@@ -605,6 +614,12 @@ lb.addEventListener('touchstart',e=>x=e.touches[0].clientX);
 lb.addEventListener('touchend',e=>{
   let d=x-e.changedTouches[0].clientX;
   if(Math.abs(d)>50)d>0?next():prev();
+});
+
+document.addEventListener('click', e => {
+  if(!nav.contains(e.target) && menu.classList.contains('active')){
+    menu.classList.remove('active');
+  }
 });
 
 </script>
