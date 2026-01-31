@@ -98,7 +98,7 @@ section{
   justify-content:center;
   text-align:center;
 }
-.hero h1{font-size:4.5rem}
+.hero h1{font-size:3.8rem}
 .hero span{color:var(--primary)}
 .hero p{font-size:1.25rem;opacity:.85}
 
@@ -303,6 +303,58 @@ section{
 .contact-item a:hover{
   text-decoration:underline;
 }
+
+/* HERO BUTTONS */
+.hero-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 34px;
+  border-radius:999px;
+  font-size:1rem;
+  font-weight:600;
+  text-decoration:none;
+  transition:.35s cubic-bezier(.4,.8,.2,1);
+  border:2px solid transparent;
+}
+
+/* PRIMARY */
+.btn-primary{
+  background:var(--primary);
+  color:black;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(216,190,7,.35);
+}
+
+/* SECONDARY */
+.btn-secondary{
+  background:transparent;
+  color:white;
+  border-color:rgba(255,255,255,.35);
+}
+
+.btn-secondary:hover{
+  border-color:var(--primary);
+  color:var(--primary);
+  transform:translateY(-3px);
+}
+@media(max-width:480px){
+  .hero-buttons{
+    flex-direction:column;
+  }
+  .btn{
+    width:100%;
+    max-width:260px;
+  }
+}
   
 /* FOOTER */
 footer{text-align:center;padding:30px;opacity:.6}
@@ -342,6 +394,7 @@ footer{text-align:center;padding:30px;opacity:.6}
     <li><a href="#about">O nás</a></li>
     <li><a href="#gallery">Galéria</a></li>
     <li><a href="#contact">Kontakt</a></li>
+    <li><a href="https://www.facebook.com/lhtomasaboraka/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 2a1 1 0 0 1 .993 .883l.007 .117v4a1 1 0 0 1 -.883 .993l-.117 .007h-3v1h3a1 1 0 0 1 .991 1.131l-.02 .112l-1 4a1 1 0 0 1 -.858 .75l-.113 .007h-2v6a1 1 0 0 1 -.883 .993l-.117 .007h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-6h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-4a1 1 0 0 1 .883 -.993l.117 -.007h2v-1a6 6 0 0 1 5.775 -5.996l.225 -.004h3z" /></svg></a></li>
   </ul>
   <div class="burger" id="burger"><span></span><span></span><span></span></div>
 </nav>
@@ -352,6 +405,10 @@ footer{text-align:center;padding:30px;opacity:.6}
     <h1>Ľudová hudba Tomáša Boráka</h1>
     <p>Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá, odobierky, recepcie, firemné večierky, rauty a iné.</p>
   </div>
+  <div class="hero-buttons">
+  <a href="#contact" class="btn btn-primary">Kontaktujte nás</a>
+  <a href="#gallery" class="btn btn-secondary">Sledujte nás na facebooku</a>
+</div>
 </section>
 
 <section id="about">
