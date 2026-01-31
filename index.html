@@ -1,203 +1,268 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CzechMath</title>
 
-<title>Ľudová hudba Tomáša Boráka | Svadby, folklór</title>
+  <style>
+/* =================================================
+   BASE.CSS
+   ================================================= */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-<meta name="description" content="Ľudová hudba Tomáša Boráka – profesionálna folklórna kapela na svadby, oslavy, krstiny a kultúrne podujatia.">
-<meta name="keywords" content="ľudová hudba, folklórna kapela, hudba na svadbu, cimbalová hudba, Tomáš Borák">
-<meta name="author" content="Ľudová hudba Tomáša Boráka">
+html, body { margin: 0; padding: 0; }
 
-<!-- OpenGraph -->
-<meta property="og:title" content="Ľudová hudba Tomáša Boráka">
-<meta property="og:description" content="Živá folklórna hudba na svadby a oslavy.">
-<meta property="og:image" content="https://tvojweb.sk/og-image.jpg">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://tvojweb.sk">
+img { max-width: 100%; display: block; }
 
-<link rel="icon" href="favicon.ico">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
 :root {
-  --gold:#d4af37;
-  --dark:#0b0b0b;
-  --gray:#bdbdbd;
+  --color-bg-main: #0e0f14;
+  --color-bg-secondary: #141621;
+  --color-text-main: #ffffff;
+  --color-text-muted: #b8bbd0;
+  --color-accent: #5f7cff;
+
+  --font-primary: Inter, system-ui, sans-serif;
+
+  --fs-body: 16px;
+  --fs-h1: 48px;
+  --fs-h2: 36px;
+  --fs-h3: 24px;
+
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 48px;
+  --space-xl: 80px;
+
+  --transition-base: 0.3s ease;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:var(--dark);color:#fff}
-
-/* HEADER */
-header{position:fixed;top:0;width:100%;background:rgba(0,0,0,.85);z-index:100}
-.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:700}
-.nav-links a{color:#fff;text-decoration:none;margin-left:25px;font-size:14px}
-.nav-links a:hover{color:var(--gold)}
-.hamburger{display:none;font-size:26px;cursor:pointer}
-
-/* HERO */
-.hero{
-  height:100vh;
-  background:linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.85)),url("hero.jpg") center/cover;
-  display:flex;align-items:center;text-align:center;padding:0 20px
+body {
+  font-family: var(--font-primary);
+  font-size: var(--fs-body);
+  color: var(--color-text-main);
+  background: var(--color-bg-main);
+  line-height: 1.6;
 }
-.hero h1{font-size:48px;margin-bottom:20px}
-.hero p{color:var(--gray);margin-bottom:30px}
-.btn{background:var(--gold);color:#000;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:600}
 
-/* SECTIONS */
-section{padding:100px 20px}
-.container{max-width:1200px;margin:auto}
-h2{text-align:center;margin-bottom:50px;font-size:32px}
-
-/* ABOUT */
-.about{text-align:center;color:var(--gray);max-width:900px;margin:auto}
-.members{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;margin-top:60px}
-.member{background:#111;border-radius:20px;padding:30px;text-align:center;transition:.3s}
-.member:hover{transform:translateY(-6px)}
-.member img{width:120px;height:120px;border-radius:50%;border:3px solid var(--gold);margin-bottom:15px;object-fit:cover}
-
-/* REVIEWS */
-.reviews{max-width:700px;margin:auto;text-align:center}
-.review{display:none}
-.review.active{display:block}
-.stars{color:var(--gold);margin-bottom:10px}
-
-/* GALLERY */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.gallery img{width:100%;border-radius:16px;cursor:pointer;transition:.3s}
-.gallery img:hover{transform:scale(1.03);opacity:.85}
-
-/* LIGHTBOX */
-#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;justify-content:center;align-items:center;z-index:999}
-#lightbox img{max-width:90%;max-height:90%;border-radius:16px}
-
-/* CONTACT */
-.contact-box{background:#111;padding:40px;border-radius:20px;text-align:center}
-.contact-info{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-top:20px}
-.contact-info a{color:#fff;text-decoration:none}
-.contact-info a:hover{color:var(--gold)}
-
-/* FACEBOOK */
-.fb{background:#050505}
-
-/* FOOTER */
-footer{text-align:center;padding:30px;color:#777;font-size:14px}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .nav-links{position:absolute;top:60px;right:0;background:#000;width:100%;display:none;flex-direction:column;text-align:center}
-  .nav-links a{padding:15px;border-bottom:1px solid #222}
-  .hamburger{display:block}
+/* =================================================
+   LAYOUT.CSS
+   ================================================= */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
 }
-</style>
+
+.section { padding-block: var(--space-xl); }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.section-features {
+  background: var(--color-bg-secondary);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+}
+
+footer {
+  padding: var(--space-lg) 0;
+}
+
+/* =================================================
+   EFFECTS.CSS
+   ================================================= */
+.button,
+.card,
+.gallery img {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(95,124,255,.25);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.gallery img {
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 0.6s ease;
+}
+
+/* =================================================
+   LIGHTBOX.CSS
+   ================================================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+  z-index: 9999;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+}
+
+.lightbox-button {
+  position: absolute;
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.lightbox-close { top: 24px; right: 24px; }
+.lightbox-prev { left: 24px; }
+.lightbox-next { right: 24px; }
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="nav">
-    <div class="logo">ĽH Tomáša Boráka</div>
-    <div class="nav-links" id="menu">
-      <a href="#uvod">Úvod</a>
-      <a href="#onas">O nás</a>
-      <a href="#galeria">Galéria</a>
-      <a href="#referencie">Referencie</a>
-      <a href="#kontakt">Kontakt</a>
-      <a href="#facebook">Facebook</a>
-    </div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
+<!-- HERO -->
+<header class="hero section reveal">
+  <div class="container">
+    <!-- obsah podľa Figmy -->
   </div>
 </header>
 
-<section class="hero" id="uvod">
+<!-- FEATURES -->
+<section class="section section-features reveal">
+  <div class="container grid">
+    <div class="card">Feature</div>
+    <div class="card">Feature</div>
+    <div class="card">Feature</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section reveal">
+  <div class="container gallery">
+    <img src="assets/images/1.jpg" alt="">
+    <img src="assets/images/2.jpg" alt="">
+    <img src="assets/images/3.jpg" alt="">
+  </div>
+</section>
+
+<footer>
   <div class="container">
-    <h1>Ľudová hudba Tomáša Boráka</h1>
-    <p>Svadby • oslavy • folklórne podujatia</p>
-    <a href="#kontakt" class="btn">Ozvite sa nám</a>
+    Footer
   </div>
-</section>
-
-<section id="onas">
-  <div class="container">
-    <h2>O nás</h2>
-    <p class="about">
-      Profesionálna folklórna hudba pôsobiaca na Slovensku aj v zahraničí.
-    </p>
-
-    <div class="members">
-      <div class="member"><img src="member1.jpg"><h4>Tomáš Borák</h4><small>Husle</small></div>
-      <div class="member"><img src="member2.jpg"><h4>Martin Smutný</h4><small>Husle</small></div>
-      <div class="member"><img src="member3.jpg"><h4>Lenka Václavíková</h4><small>Cimbal</small></div>
-      <div class="member"><img src="member4.jpg"><h4>Ján Budáč</h4><small>Basa</small></div>
-    </div>
-  </div>
-</section>
-
-<section id="galeria">
-  <div class="container">
-    <h2>Galéria</h2>
-    <div class="gallery">
-      <img src="galeria1.jpg" onclick="openLightbox(this.src)">
-      <img src="galeria2.jpg" onclick="openLightbox(this.src)">
-      <img src="galeria3.jpg" onclick="openLightbox(this.src)">
-      <img src="galeria4.jpg" onclick="openLightbox(this.src)">
-    </div>
-  </div>
-</section>
-
-<section id="referencie">
-  <div class="container reviews">
-    <h2>Referencie</h2>
-    <div class="review active"><div class="stars">★★★★★</div>Skvelá hudba a atmosféra<br><strong>Martina & Peter</strong></div>
-    <div class="review"><div class="stars">★★★★★</div>Hostia boli nadšení<br><strong>Zuzana & Jozef</strong></div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="container">
-    <div class="contact-box">
-      <h2>Rezervujte si nás</h2>
-      <div class="contact-info">
-        <a href="mailto:lhtomasaboraka@gmail.com">📧 Email</a>
-        <a href="tel:+421918477450">📞 Telefón</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="facebook" class="fb">
-  <div class="container">
-    <h2>Sledujte nás na Facebooku</h2>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/lhtomasaboraka&tabs=timeline&width=500&height=600"
-      width="500" height="600" style="border:none;overflow:hidden" scrolling="no"></iframe>
-  </div>
-</section>
-
-<footer>© 2026 Ľudová hudba Tomáša Boráka</footer>
-
-<div id="lightbox" onclick="closeLightbox()">
-  <img id="lightbox-img">
-</div>
+</footer>
 
 <script>
-function toggleMenu(){
-  const m=document.getElementById("menu");
-  m.style.display=m.style.display==="flex"?"none":"flex";
+/* =========================
+   EFFECTS.JS
+   ========================= */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (!prefersReducedMotion) {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 }
-function openLightbox(src){
-  document.getElementById("lightbox").style.display="flex";
-  document.getElementById("lightbox-img").src=src;
+
+/* =========================
+   LIGHTBOX.JS
+   ========================= */
+const imgs = document.querySelectorAll('.gallery img');
+if (imgs.length) {
+  let i = 0;
+  const lb = document.createElement('div');
+  lb.className = 'lightbox';
+  const img = document.createElement('img');
+  const prev = document.createElement('button');
+  const next = document.createElement('button');
+  const close = document.createElement('button');
+
+  prev.textContent = '‹';
+  next.textContent = '›';
+  close.textContent = '×';
+
+  prev.className = 'lightbox-button lightbox-prev';
+  next.className = 'lightbox-button lightbox-next';
+  close.className = 'lightbox-button lightbox-close';
+
+  lb.append(img, prev, next, close);
+  document.body.appendChild(lb);
+
+  const open = n => {
+    i = n;
+    img.src = imgs[i].src;
+    lb.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeLb = () => {
+    lb.classList.remove('is-open');
+    document.body.style.overflow = '';
+  };
+
+  imgs.forEach((im, n) => im.onclick = () => open(n));
+  close.onclick = closeLb;
+  next.onclick = () => open((i + 1) % imgs.length);
+  prev.onclick = () => open((i - 1 + imgs.length) % imgs.length);
+  lb.onclick = e => e.target === lb && closeLb();
 }
-function closeLightbox(){
-  document.getElementById("lightbox").style.display="none";
-}
-let i=0;const r=document.querySelectorAll(".review");
-setInterval(()=>{r[i].classList.remove("active");i=(i+1)%r.length;r[i].classList.add("active")},5000);
 </script>
 
 </body>
