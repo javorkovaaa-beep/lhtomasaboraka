@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ľudová hudba Tomáša Boráka – svadby, oslavy, krstiny, folklórne vystúpenia na celom Slovensku aj v zahraničí.">
+
 <title>Ľudová hudba Tomáša Boráka</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -86,7 +88,7 @@ section{
 /* HERO */
 .hero{
   max-width:none;
-  height:100vh;
+  min-height:100svh;
   background:
     radial-gradient(circle at top, rgba(216,190,7,.25), transparent 50%),
     linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.95)),
@@ -96,7 +98,7 @@ section{
   justify-content:center;
   text-align:center;
 }
-.hero h1{font-size:5rem}
+.hero h1{font-size:4.5rem}
 .hero span{color:var(--primary)}
 .hero p{font-size:1.25rem;opacity:.85}
 
@@ -301,7 +303,20 @@ section{
 .contact-item a:hover{
   text-decoration:underline;
 }
+  
+/* FACEBOOK */
+#facebook{
+  text-align:center;
+}
 
+.fb-wrapper{
+  max-width:520px;
+  margin:50px auto 0;
+  background:rgba(255,255,255,.04);
+  padding:20px;
+  border-radius:24px;
+}
+  
 /* FOOTER */
 footer{text-align:center;padding:30px;opacity:.6}
 
@@ -347,7 +362,7 @@ footer{text-align:center;padding:30px;opacity:.6}
 
 <section class="hero" id="home">
   <div class="reveal">
-    <h1>Ľudová hudba</br>Tomáša Boráka</h1>
+    <h1>Ľudová hudba Tomáša Boráka</h1>
     <p>Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá, odobierky, recepcie, firemné večierky, rauty a iné.</p>
   </div>
 </section>
@@ -449,6 +464,30 @@ Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička a 
   </div>
 </section>
 
+<section id="facebook">
+  <div class="reveal">
+    <h2>Sledujte nás na Facebooku</h2>
+    <p style="opacity:.75; max-width:700px">
+      Najnovšie vystúpenia, fotky a aktuálne informácie priamo od nás.
+    </p>
+
+    <div class="fb-wrapper">
+      <div 
+        class="fb-page"
+        data-href="https://www.facebook.com/lhtomasaboraka"
+        data-tabs="timeline"
+        data-width="500"
+        data-height="600"
+        data-small-header="false"
+        data-adapt-container-width="true"
+        data-hide-cover="false"
+        data-show-facepile="false">
+      </div>
+    </div>
+  </div>
+</section>
+
+  
 <footer>© 2026 Ľudová hudba Tomáša Boráka</footer>
 
 <!-- LIGHTBOX -->
@@ -486,6 +525,10 @@ imgs.forEach((img,n)=>img.onclick=()=>openLB(n));
 document.querySelector('.lightbox-close').onclick=()=>lb.classList.remove('active');
 document.querySelector('.lightbox-next').onclick=next;
 document.querySelector('.lightbox-prev').onclick=prev;
+
+lb.addEventListener('click', e=>{
+  if(e.target === lb) lb.classList.remove('active');
+});
 
 /* ===== REFERENCES SLIDER ===== */
 const track = document.getElementById('refTrack');
@@ -541,6 +584,12 @@ lb.addEventListener('touchend',e=>{
   let d=x-e.changedTouches[0].clientX;
   if(Math.abs(d)>50)d>0?next():prev();
 });
+
+/* FACEBOOK */
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v18.0">
+
 </script>
 
 
