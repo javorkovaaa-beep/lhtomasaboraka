@@ -304,19 +304,6 @@ section{
   text-decoration:underline;
 }
   
-/* FACEBOOK */
-#facebook{
-  text-align:center;
-}
-
-.fb-wrapper{
-  max-width:520px;
-  margin:50px auto 0;
-  background:rgba(255,255,255,.04);
-  padding:20px;
-  border-radius:24px;
-}
-  
 /* FOOTER */
 footer{text-align:center;padding:30px;opacity:.6}
 
@@ -464,28 +451,6 @@ Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička a 
   </div>
 </section>
 
-<section id="facebook">
-  <div class="reveal">
-    <h2>Sledujte nás na Facebooku</h2>
-    <p style="opacity:.75; max-width:700px">
-      Najnovšie vystúpenia, fotky a aktuálne informácie priamo od nás.
-    </p>
-
-    <div class="fb-wrapper">
-      <div 
-        class="fb-page"
-        data-href="https://www.facebook.com/lhtomasaboraka"
-        data-tabs="timeline"
-        data-width="500"
-        data-height="600"
-        data-small-header="false"
-        data-adapt-container-width="true"
-        data-hide-cover="false"
-        data-show-facepile="false">
-      </div>
-    </div>
-  </div>
-</section>
 
   
 <footer>© 2026 Ľudová hudba Tomáša Boráka</footer>
@@ -584,11 +549,6 @@ lb.addEventListener('touchend',e=>{
   let d=x-e.changedTouches[0].clientX;
   if(Math.abs(d)>50)d>0?next():prev();
 });
-
-/* FACEBOOK */
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/sk_SK/sdk.js#xfbml=1&version=v18.0">
 
 </script>
 
