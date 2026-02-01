@@ -3,132 +3,257 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ľudová hudba Tomáša Boráka – svadby, oslavy, krstiny, folklórne vystúpenia na celom Slovensku aj v zahraničí.">
-
 <title>Ľudová hudba Tomáša Boráka</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Inter font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --primary:#D8BE07;
-  --dark:#0b0b0b;
-  --light:#ffffff;
+  --gold:#C9A24D;
+  --gold-light:#E5C97A;
+  --black:#0E0E0E;
+  --black-soft:#161616;
+  --white:#F5F5F5;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   font-family:'Inter',sans-serif;
-  background:var(--dark);
-  color:var(--light);
-  line-height:1.7;
+  background:var(--black);
+  color:var(--white);
 }
 
-/* HEADER */
+a{text-decoration:none;color:inherit}
+
+/* ================= HEADER ================= */
 header{
   position:fixed;
-  top:0; width:100%;
-  backdrop-filter: blur(12px);
-  background:rgba(0,0,0,.65);
-  z-index:1000;
+  top:0;
+  width:100%;
+  z-index:100;
+  background:rgba(14,14,14,.9);
+  backdrop-filter:blur(8px);
 }
-nav{
+
+.nav{
   max-width:1200px;
   margin:auto;
-  padding:18px 24px;
+  padding:20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.logo img{width:180px}
 
-/* NAV */
-nav ul{
-  display:flex;
-  list-style:none;
-  gap:24px;
+.logo{
+  font-weight:600;
+  color:var(--gold);
 }
-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:.95rem;
+
+.nav ul{
+  list-style:none;
+  display:flex;
+  gap:32px;
+}
+
+.nav a{
+  font-weight:300;
   position:relative;
 }
-nav a::after{
-  content:"";
+
+.nav a::after{
+  content:'';
   position:absolute;
-  bottom:-6px; left:0;
-  width:0; height:2px;
-  background:var(--primary);
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--gold);
   transition:.3s;
 }
-nav a:hover::after{width:100%}
+.nav a:hover::after{width:100%}
 
-/* BURGER */
-.burger{
+/* ===== hamburger ===== */
+.hamburger{
   display:none;
   flex-direction:column;
-  gap:6px;
+  gap:5px;
   cursor:pointer;
 }
-.burger span{
+.hamburger span{
   width:26px;
   height:2px;
-  background:white;
+  background:var(--white);
+}
+  
+/* hamburger animácia */
+.hamburger.active span:nth-child(1){
+  transform:rotate(45deg) translate(5px,5px);
+}
+.hamburger.active span:nth-child(2){
+  opacity:0;
+}
+.hamburger.active span:nth-child(3){
+  transform:rotate(-45deg) translate(6px,-6px);
+}
+.hamburger span{
+  transition:.3s ease;
 }
 
-/* SECTIONS */
+.mobile-menu{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:0;
+  width:100%;
+  background:var(--black);
+}
+.mobile-menu a{
+  display:block;
+  padding:16px 20px;
+  border-bottom:1px solid #222;
+}
+
+/* ================= SECTIONS ================= */
 section{
   max-width:1200px;
   margin:auto;
-  padding:80px 24px;
+  padding:120px 20px;
 }
 
-/* HERO */ 
-  .hero{ max-width:none; 
-        min-height:100svh; 
-        background: radial-gradient(circle at top, rgba(216,190,7,.25), transparent 50%), 
-          linear-gradient(rgba(0,0,0,.75), rgba(0,0,0,.95)), url("lhtbgroup.jpg") top/cover; display:flex; align-items:center; justify-content:center; text-align:center; 
-       } 
-
-.hero h1{font-size:3.8rem}
-.hero span{color:var(--primary)}
-.hero p{font-size:1.25rem;opacity:.85}
-
-/* REVEAL */
-.reveal{
-  opacity:0;
-  transform:translateY(50px);
-  transition:1s cubic-bezier(.2,.8,.2,1);
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
 }
-.reveal.active{opacity:1;transform:none}
 
-/* TEAM */
-.team{
+.hero h1{
+  font-size:clamp(2.5rem,6vw,4rem);
+  font-weight:600;
+  margin-bottom:24px;
+}
+
+.hero p{
+  max-width:520px;
+  font-weight:300;
+  margin-bottom:40px;
+}
+
+.btns{
+  display:flex;
+  gap:20px;
+}
+
+.btn{
+  padding:14px 30px;
+  border-radius:999px;
+  font-weight:600;
+  transition:.3s;
+}
+.btn-primary{
+  background:var(--gold);
+  color:#000;
+}
+.btn-primary:hover{
+  background:var(--gold-light);
+  transform:translateY(-2px);
+}
+.btn-secondary{
+  border:1px solid var(--gold);
+  color:var(--gold);
+}
+.btn-secondary:hover{
+  background:var(--gold);
+  color:#000;
+}
+
+/* ================= O NAS ================= */
+
+.about-section{
+  max-width:1200px;
+  margin:auto;
+  padding:140px 20px;
+}
+
+.about-text{
+  max-width:900px;
+  margin-bottom:80px;
+}
+
+.about-text h2{
+  font-size:48px;
+  font-weight:600;
+  margin-bottom:24px;
+}
+
+.about-text p{
+  font-size:16px;
+  font-weight:300;
+  line-height:1.8;
+  color:#cfcfcf;
+}
+
+/* členovia */
+.members{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:30px;
-  margin-top:60px;
-}
-.member{
-  background:rgba(255,255,255,.04);
-  border-radius:20px;
-  padding:30px 20px;
-  text-align:center;
-  transition:.4s;
-}
-.member:hover{transform:translateY(-10px)}
-.member img{
-  width:130px;
-  height:130px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid var(--primary);
-  margin-bottom:15px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:32px;
 }
 
-/* GALLERY */
+.member-card{
+  background:#1b1b1b;
+  border-radius:28px;
+  padding:40px 24px;
+  text-align:center;
+  transition:.3s ease;
+}
+
+.member-card:hover{
+  transform:translateY(-6px);
+}
+
+/* avatar */
+.avatar{
+  width:160px;
+  height:160px;
+  margin:0 auto 24px;
+  border-radius:50%;
+  padding:6px;
+  background:var(--gold);
+}
+
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* meno + nástroj */
+.member-card h3{
+  font-size:18px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+.member-card span{
+  font-size:14px;
+  font-weight:300;
+  color:#b5b5b5;
+}
+
+/* mobile */
+@media(max-width:768px){
+  .about-text h2{
+    font-size:36px;
+  }
+}
+
+
+/* ================= GALLERY ================= */
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -136,522 +261,252 @@ section{
 }
 .gallery img{
   width:100%;
-  height:200px;
+  aspect-ratio:4/3;
   object-fit:cover;
-  border-radius:18px;
+  border-radius:12px;
   cursor:pointer;
-  transition:.4s;
 }
-.gallery img:hover{transform:scale(1.08)}
 
-/* LIGHTBOX */
+/* ===== lightbox ===== */
 .lightbox{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.92);
-  display:flex;
-  align-items:center;
+  background:rgba(0,0,0,.9);
+  display:none;
   justify-content:center;
-  opacity:0;
-  pointer-events:none;
-  transition:.4s;
-  z-index:2000;
+  align-items:center;
+  z-index:200;
 }
-.lightbox.active{opacity:1;pointer-events:auto}
 .lightbox img{
   max-width:90%;
   max-height:90%;
-  border-radius:18px;
 }
-.lightbox-close{
-  position:absolute;
-  top:30px;
-  right:40px;
-  font-size:40px;
-  cursor:pointer;
-}
-.lightbox-nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:60px;
-  cursor:pointer;
-}
-.lightbox-prev{left:30px}
-.lightbox-next{right:30px}
+.lightbox.active{display:flex}
 
-/* ===== REFERENCES SLIDER ===== */
-.references-slider{
-  position:relative;
+/* ================= SLIDER ================= */
+.slider{
   overflow:hidden;
-  max-width:900px;
-  margin:60px auto 0;
+  position:relative;
 }
-
-.references-track{
+.slides{
   display:flex;
-  transition:transform .8s cubic-bezier(.4,.8,.2,1);
+  transition:.6s ease;
 }
-
-.reference{
+.slide{
   min-width:100%;
-  background:rgba(255,255,255,.04);
-  padding:40px 36px;
-  border-radius:24px;
+  padding:40px;
   text-align:center;
 }
-
-.stars{
-  color:var(--primary);
-  font-size:1.2rem;
-  margin-bottom:18px;
+.slide p{
+  font-weight:300;
+  margin-bottom:16px;
 }
-
-.reference p{
-  font-size:1.05rem;
-  opacity:.9;
-  margin-bottom:22px;
-}
-
-.reference h4{
+.slide span{
+  color:var(--gold);
   font-weight:600;
 }
 
-.reference span{
-  font-size:.9rem;
-  opacity:.6;
-}
-
-/* dots */
-.slider-dots{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-top:24px;
-}
-
-.slider-dots span{
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,.3);
-  cursor:pointer;
-}
-
-.slider-dots span.active{
-  background:var(--primary);
-}
-
-/* CONTACT */
-.contact-box{
-  max-width:700px;
-  margin:auto;
+/* ================= FOOTER ================= */
+footer{
+  padding:60px 20px;
   text-align:center;
-  background:rgba(255,255,255,.04);
-  padding:60px 40px;
-  border-radius:24px;
+  background:#0b0b0b;
+  font-size:14px;
+  opacity:.7;
 }
 
-.contact-box h2{
-  font-size:2.2rem;
-  margin-bottom:10px;
-}
-
-.contact-box p{
-  opacity:.8;
-  margin-bottom:40px;
-  font-size:1.1rem;
-}
-
-.contact-items{
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
-}
-
-.contact-item{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  font-size:1.1rem;
-}
-
-.contact-item span{
-  width:48px;
-  height:48px;
-  border-radius:50%;
-  background:var(--primary);
-  color:black;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  font-weight:700;
-}
-
-.contact-item a{
-  color:white;
-  text-decoration:none;
-}
-.contact-item a:hover{
-  text-decoration:underline;
-}
-
-/* HERO BUTTONS */
-.hero-buttons{
-  margin-top:40px;
-  display:flex;
-  justify-content:center;
-  gap:20px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  padding:14px 34px;
-  border-radius:999px;
-  font-size:1rem;
-  font-weight:600;
-  text-decoration:none;
-  transition:.35s cubic-bezier(.4,.8,.2,1);
-  border:2px solid transparent;
-}
-
-/* PRIMARY */
-.btn-primary{
-  background:var(--primary);
-  color:black;
-}
-
-.btn-primary:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 16px rgba(216,190,7,.25);
-  filter:brightness(1.05);
-}
-
-
-/* SECONDARY */
-.btn-secondary{
-  background:transparent;
-  color:white;
-  border-color:rgba(255,255,255,.35);
-}
-
-.btn-secondary:hover{
-  border-color:var(--primary);
-  color:var(--primary);
-  transform:translateY(-3px);
-}
-@media(max-width:480px){
-  .hero-buttons{
-    flex-direction:column;
-  }
-  .btn{
-    width:100%;
-    max-width:260px;
-  }
-}
-  
-/* FOOTER */
-footer{text-align:center;padding:30px;opacity:.6}
-
-/* MOBILE */
-
-@media(max-width:900px){
-  .burger{display:flex}
-
-  nav ul{
-    position:fixed;
-    inset:0;
-    background:#000;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    gap:32px;
-    font-size:1.4rem;
-    transform:translateX(100%);
-    transition:.4s ease;
-    z-index:999;
-  }
-
-  nav ul.active{
-    transform:none;
-  }
-
-  nav ul li a{
-    font-size:1.6rem;
-  }
-}
-
-  nav ul.active{transform:none}
-  .hero h1{font-size:2.1rem}
-  section{padding:100px 20px}
-  .gallery{grid-template-columns:1fr 1fr}
-}
-@media(max-width:480px){
-  .gallery{grid-template-columns:1fr}
-}
-
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-  section{
-    padding:60px 18px;
-  }
-
-  .contact-box{
-    padding:40px 20px;
-  }
+  .nav ul{display:none}
+  .hamburger{display:flex}
 }
-
-@media(max-width:480px){
-  section{
-    padding:48px 16px;
-  }
-}
-
-  
 </style>
 </head>
 
 <body>
 
 <header>
-<nav>
-  <div class="logo"><img src="lhtblogo.png"></div>
-  <ul id="menu">
-    <li><a href="#home"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12.707 2.293l9 9c.63 .63 .184 1.707 -.707 1.707h-1v6a3 3 0 0 1 -3 3h-1v-7a3 3 0 0 0 -2.824 -2.995l-.176 -.005h-2a3 3 0 0 0 -3 3v7h-1a3 3 0 0 1 -3 -3v-6h-1c-.89 0 -1.337 -1.077 -.707 -1.707l9 -9a1 1 0 0 1 1.414 0m.293 11.707a1 1 0 0 1 1 1v7h-4v-7a1 1 0 0 1 .883 -.993l.117 -.007z" /></svg></a></li>
-    <li><a href="#about">O nás</a></li>
-    <li><a href="#gallery">Galéria</a></li>
-    <li><a href="#contact">Kontakt</a></li>
-    <li><a href="https://www.facebook.com/lhtomasaboraka/"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 2a1 1 0 0 1 .993 .883l.007 .117v4a1 1 0 0 1 -.883 .993l-.117 .007h-3v1h3a1 1 0 0 1 .991 1.131l-.02 .112l-1 4a1 1 0 0 1 -.858 .75l-.113 .007h-2v6a1 1 0 0 1 -.883 .993l-.117 .007h-4a1 1 0 0 1 -.993 -.883l-.007 -.117v-6h-2a1 1 0 0 1 -.993 -.883l-.007 -.117v-4a1 1 0 0 1 .883 -.993l.117 -.007h2v-1a6 6 0 0 1 5.775 -5.996l.225 -.004h3z" /></svg></a></li>
-  </ul>
-  <div class="burger" id="burger"><span></span><span></span><span></span></div>
-</nav>
+  <nav class="nav">
+    <div class="logo">LH Tomáša Boráka</div>
+    <ul>
+      <li><a href="#home">Úvod</a></li>
+      <li><a href="#about">O nás</a></li>
+      <li><a href="#gallery">Galéria</a></li>
+      <li><a href="#reviews">Referencie</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Úvod</a>
+    <a href="#about">O nás</a>
+    <a href="#gallery">Galéria</a>
+    <a href="#reviews">Referencie</a>
+    <a href="#contact">Kontakt</a>
+  </div>
 </header>
 
-<section class="hero" id="home">
-  <div class="reveal">
+<main>
+
+<section id="home" class="hero">
+  <div>
     <h1>Ľudová hudba Tomáša Boráka</h1>
     <p>
-      Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá,
-      odobierky, recepcie, firemné večierky, rauty a iné.
+Oslavy, svadby, krštenia, plesy, zábavy, životné jubileá, odobierky, recepcie, firemné večierky, rauty a iné.
     </p>
-
-    <div class="hero-buttons">
-      <a href="#contact" class="btn btn-primary">Kontaktujte nás</a>
-      <a href="https://www.facebook.com/lhtomasaboraka/" 
-         target="_blank"
-         class="btn btn-secondary">
-         Sledujte nás na Facebooku
-      </a>
+    <div class="btns">
+      <a href="#contact" class="btn btn-primary">Kontaktuj nás</a>
+      <a href="#gallery" class="btn btn-secondary">Sleduj nás na facebooku</a>
     </div>
   </div>
 </section>
 
-
-<section id="about">
-  <div class="reveal">
+<section id="about" class="about-section">
+  <div class="about-text">
     <h2>O nás</h2>
-    <p>Vznikli sme v roku 2013, na pôde cvičiska FS Detva ako skupina mladých nadšencov slovenského folklóru. Venujeme sa interpretácii tradičnej ľudovej hudby z rôznych regiónov Slovenska, predovšetkým z detvianskej oblasti, pričom náš repertoár postupne obohacujeme aj o iné hudobné žánre v rôznych úpravách.
-
-Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička a neskôr vo folklórnych súboroch Detva, Podpoľanec, Hriňovčan a Urpín, s ktorými sme účinkovali doma aj v zahraničí. Viacerí z nás sú dnes aktívnymi členmi hudobnej zložky FS Detva a FS Podpoľanec. Ako kolektív však najradšej prinášame radosť na svadbách, rodinných oslavách a kultúrnych podujatiach.</p>
-
-    <div class="team">
-      <div class="member"><img src="tomas.JPG"><h4>Tomáš Borák</h4><p>Husle</p></div>
-      <div class="member"><img src="suster.JPG"><h4>Martin Smutný</h4><p>Husle</p></div>
-      <div class="member"><img src="lenka.JPG"><h4>Lenka Václavíková</h4><p>Cimbal</p></div>
-      <div class="member"><img src="janco.JPG"><h4>Ján Budáč</h4><p>Basa</p></div>
-      <div class="member"><img src="mato.JPG"><h4>Martin Václavík</h4><p>Akordeón</p></div>
-    </div>
+    <p>
+      Vznikli sme v roku 2013, na pôde cvičiska FS Detva ako skupina mladých
+      nadšencov slovenského folklóru. Venujeme sa interpretácii tradičnej
+      ľudovej hudby z rôznych regiónov Slovenska, predovšetkým z detvianskej
+      oblasti, pričom náš repertoár postupne obohacujeme aj o iné hudobné
+      žánre v rôznych úpravách.
+      <br><br>
+      Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička
+      a neskôr vo folklórnych súboroch Detva, Podpoľanec, Hriňovčan a Urpín,
+      s ktorými sme účinkovali doma aj v zahraničí.
+      <br><br>
+      Viacerí z nás sú dnes aktívnymi členmi hudobnej zložky FS Detva a
+      FS Podpoľanec. Ako kolektív však najradšej prinášame radosť na
+      svadbách, rodinných oslavách a kultúrnych podujatiach.
+    </p>
   </div>
-</section>
 
-
-
-<section id="contact">
-  <div class="reveal">
-    <div class="contact-box">
-      <h2>Rezervujte si nás na vaše podujatie</h2>
-      <p>
-        Ponuku je možné ľubovoľne prispôsobiť Vašim požiadavkám a potrebám. Základom je pre nás úsmev, dobrá nálada a Vaša spokojnosť!
-      </p>
-
-      <div class="contact-items">
-        <div class="contact-item">
-          <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-mail-opened"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M14.872 14.287l6.522 6.52a2.996 2.996 0 0 1 -2.218 1.188l-.176 .005h-14a2.995 2.995 0 0 1 -2.394 -1.191l6.521 -6.522l2.318 1.545l.116 .066a1 1 0 0 0 .878 0l.116 -.066l2.317 -1.545z" /><path d="M2 9.535l5.429 3.62l-5.429 5.43z" /><path d="M22 9.535v9.05l-5.43 -5.43z" /><path d="M12.44 2.102l.115 .066l8.444 5.629l-8.999 6l-9 -6l8.445 -5.63a1 1 0 0 1 .994 -.065z" /></svg></span>
-          <a href="mailto:lhtomasaboraka@gmail.com">lhtomasaboraka@gmail.com</a>
-        </div>
-
-        <div class="contact-item">
-          <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icons-tabler-filled icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 3a1 1 0 0 1 .877 .519l.051 .11l2 5a1 1 0 0 1 -.313 1.16l-.1 .068l-1.674 1.004l.063 .103a10 10 0 0 0 3.132 3.132l.102 .062l1.005 -1.672a1 1 0 0 1 1.113 -.453l.115 .039l5 2a1 1 0 0 1 .622 .807l.007 .121v4c0 1.657 -1.343 3 -3.06 2.998c-8.579 -.521 -15.418 -7.36 -15.94 -15.998a3 3 0 0 1 2.824 -2.995l.176 -.005h4z" /></svg></span>
-          <a href="tel:+421918477450">+421 918 477 450</a>
-        </div>
+  <div class="members">
+    <div class="member-card">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/300" alt="">
       </div>
+      <h3>Tomáš Borák</h3>
+      <span>Husle</span>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/300" alt="">
+      </div>
+      <h3>Martin Smutný</h3>
+      <span>Husle</span>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/300" alt="">
+      </div>
+      <h3>Lenka Václavíková</h3>
+      <span>Cimbal</span>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/300" alt="">
+      </div>
+      <h3>Ján Budáč</h3>
+      <span>Basa</span>
+    </div>
+
+    <div class="member-card">
+      <div class="avatar">
+        <img src="https://via.placeholder.com/300" alt="">
+      </div>
+      <h3>Martin Václavik</h3>
+      <span>Akordeón</span>
     </div>
   </div>
 </section>
+
 
 <section id="gallery">
-  <div class="reveal">
-    <h2>Galéria</h2><br>
-    <div class="gallery">
-      <img src="fotka1.jpg"><img src="fotka2.jpg"><img src="fotka3.jpg">
-      <img src="fotka4.jpg"><img src="fotka5.jpg"><img src="fotka6.jpg">
-    </div>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/600x400" alt="">
+    <img src="https://via.placeholder.com/600x400" alt="">
+    <img src="https://via.placeholder.com/600x400" alt="">
+    <img src="https://via.placeholder.com/600x400" alt="">
   </div>
 </section>
-<section id="references">
-  <div class="reveal">
-    <h2>Referencie</h2>
-    <p style="opacity:.75; max-width:700px">
-      Spätná väzba od Vás je pre nás tou najväčšou odmenou.
-    </p>
 
-    <div class="references-slider">
-      <div class="references-track" id="refTrack">
-
-        <div class="reference">
-          <div class="stars">★★★★★</div>
-          <p>
-            Skvelá hudba, perfektná atmosféra a profesionálny prístup.
-            Hostia boli nadšení od začiatku až do konca.
-          </p>
-          <h4>Martina & Peter</h4>
-          <span>Svadba</span>
-        </div>
-
-        <div class="reference">
-          <div class="stars">★★★★★</div>
-          <p>
-            Pravá ľudová hudba, ktorá roztancovala mladých aj starších.
-            Jednoznačne odporúčame.
-          </p>
-          <h4>Rodina Kováčová</h4>
-          <span>Oslava jubilea</span>
-        </div>
-
-        <div class="reference">
-          <div class="stars">★★★★★</div>
-          <p>
-            Výborná komunikácia, flexibilita a krásny hudobný prejav.
-          </p>
-          <h4>Farnosť Dolná Ves</h4>
-          <span>Krstiny</span>
-        </div>
-
+<section id="reviews">
+  <div class="slider">
+    <div class="slides" id="slides">
+      <div class="slide">
+        <p>⭐⭐⭐⭐⭐ Úžasná atmosféra a profesionálny prístup.</p>
+        <span>Svadba</span>
+      </div>
+      <div class="slide">
+        <p>⭐⭐⭐⭐⭐ Hudba, na ktorú budeme dlho spomínať.</p>
+        <span>Oslava</span>
+      </div>
+      <div class="slide">
+        <p>⭐⭐⭐⭐⭐ Autentické a citlivé prevedenie folklóru.</p>
+        <span>Krstiny</span>
       </div>
     </div>
-
-    <div class="slider-dots" id="refDots"></div>
   </div>
 </section>
 
+<section id="contact">
+  <h2 style="color:var(--gold);margin-bottom:20px">Kontakt</h2>
+  <p>Email: info@ludovahudba.sk<br>Tel: +421 XXX XXX XXX</p>
+</section>
 
-  
-<footer>© 2026 Ľudová hudba Tomáša Boráka</footer>
+</main>
 
-<!-- LIGHTBOX -->
+<footer>
+© 2026 Ľudová hudba Tomáša Boráka
+</footer>
+
+<!-- ===== lightbox ===== -->
 <div class="lightbox" id="lightbox">
-  <span class="lightbox-close">&times;</span>
-  <span class="lightbox-nav lightbox-prev">&#10094;</span>
-  <span class="lightbox-nav lightbox-next">&#10095;</span>
-  <img id="lightbox-img">
+  <img src="" alt="">
 </div>
 
 <script>
-/* REVEAL */
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>x.isIntersecting&&x.target.classList.add('active'))
-},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-/* BURGER */
-const burger=document.getElementById('burger');
-const menu=document.getElementById('menu');
-burger.onclick=()=>menu.classList.toggle('active');
-menu.querySelectorAll('a').forEach(a=>a.onclick=()=>menu.classList.remove('active'));
+/* hamburger + X animácia */
+const ham = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
 
-/* LIGHTBOX */
-const imgs=[...document.querySelectorAll('.gallery img')];
-const lb=document.getElementById('lightbox');
-const lbImg=document.getElementById('lightbox-img');
-let i=0;
-
-function openLB(n){i=n;lb.classList.add('active');lbImg.src=imgs[i].src}
-function next(){i=(i+1)%imgs.length;lbImg.src=imgs[i].src}
-function prev(){i=(i-1+imgs.length)%imgs.length;lbImg.src=imgs[i].src}
-
-imgs.forEach((img,n)=>img.onclick=()=>openLB(n));
-document.querySelector('.lightbox-close').onclick=()=>lb.classList.remove('active');
-document.querySelector('.lightbox-next').onclick=next;
-document.querySelector('.lightbox-prev').onclick=prev;
-
-lb.addEventListener('click', e=>{
-  if(e.target === lb) lb.classList.remove('active');
+ham.addEventListener('click', () => {
+  ham.classList.toggle('active');
+  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 });
 
-/* ===== REFERENCES SLIDER ===== */
-const track = document.getElementById('refTrack');
-const slides = [...track.children];
-const dotsWrap = document.getElementById('refDots');
-const slider = document.querySelector('.references-slider');
-let index = 0;
 
-/* dots */
-slides.forEach((_, i) => {
-  const dot = document.createElement('span');
-  if (i === 0) dot.classList.add('active');
-  dot.onclick = () => goTo(i);
-  dotsWrap.appendChild(dot);
-});
-const dots = [...dotsWrap.children];
 
-function goTo(i){
-  index = i;
-  track.style.transform = `translateX(-${i * 100}%)`;
-  dots.forEach(d => d.classList.remove('active'));
-  dots[i].classList.add('active');
-}
+/* lightbox */
+const imgs=document.querySelectorAll('.gallery img');
+const lightbox=document.getElementById('lightbox');
+const lightImg=lightbox.querySelector('img');
 
-/* autoplay */
-let auto = setInterval(nextSlide, 5000);
-
-function nextSlide(){
-  index = (index + 1) % slides.length;
-  goTo(index);
-}
-
-/* swipe (mobile) */
-let startX = 0;
-
-slider.addEventListener('touchstart', e => {
-  startX = e.touches[0].clientX;
-  clearInterval(auto);
-});
-
-slider.addEventListener('touchend', e => {
-  const diff = startX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) {
-    diff > 0 ? nextSlide() : goTo((index - 1 + slides.length) % slides.length);
-  }
-  auto = setInterval(nextSlide, 5000);
-});
-
-/* SWIPE */
-let x=0;
-lb.addEventListener('touchstart',e=>x=e.touches[0].clientX);
-lb.addEventListener('touchend',e=>{
-  let d=x-e.changedTouches[0].clientX;
-  if(Math.abs(d)>50)d>0?next():prev();
-});
-
-document.addEventListener('click', e => {
-  if(!nav.contains(e.target) && menu.classList.contains('active')){
-    menu.classList.remove('active');
+imgs.forEach(img=>{
+  img.onclick=()=>{
+    lightImg.src=img.src;
+    lightbox.classList.add('active');
   }
 });
+lightbox.onclick=()=>lightbox.classList.remove('active');
 
+/* slider */
+let index=0;
+const slides=document.getElementById('slides');
+setInterval(()=>{
+  index=(index+1)%3;
+  slides.style.transform=`translateX(-${index*100}%)`;
+},4000);
 </script>
-
 
 </body>
 </html>
