@@ -56,7 +56,7 @@
                 </p>
                 <div class="band-members">
                     <div class="member-card">
-                        <img src="assets/images/tomas.jpg" alt="Tomáš Borák">
+                        <img src="assets/images/tomas.jpg11" alt="Tomáš Borák">
                         <h3>Tomáš Borák</h3>
                         <p>Husle</p>
                     </div>
@@ -142,15 +142,22 @@
         </section>
 
         <section id="galeria" class="gallery">
-            <div class="gallery-grid">
-                <img src="assets/images/fotka1.jpg" alt="Galéria 1">
-                <img src="assets/images/fotka2.jpg" alt="Galéria 2">
-                <img src="assets/images/fotka3.jpg" alt="Galéria 3">
-                <img src="assets/images/fotka4.jpg" alt="Galéria 4">
-                <img src="assets/images/fotka5.jpg" alt="Galéria 5">
-                <img src="assets/images/fotka6.jpg" alt="Galéria 6">
-                <img src="assets/images/fotka7.jpg" alt="Galéria 7">
-                 <img src="assets/images/lhtbgroup.jpg" alt="Galéria 8">
+            <div class="container">
+                <h2>Galéria</h2>
+                <div class="gallery-slider-container">
+                    <div class="gallery-slider">
+                        <img src="assets/images/fotka1.jpg" alt="Galéria 1" class="gallery-slide">
+                        <img src="assets/images/fotka2.jpg" alt="Galéria 2" class="gallery-slide">
+                        <img src="assets/images/fotka3.jpg" alt="Galéria 3" class="gallery-slide">
+                        <img src="assets/images/fotka4.jpg" alt="Galéria 4" class="gallery-slide">
+                        <img src="assets/images/fotka5.jpg" alt="Galéria 5" class="gallery-slide">
+                        <img src="assets/images/fotka6.jpg" alt="Galéria 6" class="gallery-slide">
+                        <img src="assets/images/fotka7.jpg" alt="Galéria 7" class="gallery-slide">
+                        <img src="assets/images/lhtbgroup.jpg" alt="Galéria 8" class="gallery-slide">
+                    </div>
+                    <button class="slider-btn prev-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg></button>
+                    <button class="slider-btn next-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-right"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l6 6l-6 6" /></svg></button>
+                </div>
             </div>
         </section>
     </main>
@@ -161,6 +168,11 @@
             <p>&copy; 2026 Ľudová hudba Tomáša Boráka</p>
         </div>
     </footer>
+
+    <div id="lightbox" class="lightbox">
+        <button class="close-lightbox">&times;</button>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
 
     <script src="assets/js/script.js"></script>
     <script>

@@ -60,6 +60,57 @@ document.addEventListener('DOMContentLoaded', function() {
         setInterval(nextTestimonial, slideInterval);
     }
     
+    // --- Gallery Slider & Lightbox ---
+    const gallerySlider = document.querySelector('.gallery-slider');
+    const slides = document.querySelectorAll('.gallery-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeLightbox = document.querySelector('.close-lightbox');
+
+    if (gallerySlider) {
+        let currentIndex = 0;
+        const slideWidth = slides[0].clientWidth; // Assumes all slides have the same width
+        const gap = 16; // The gap between slides in pixels, matching the CSS
+
+        function updateSliderPosition() {
+            gallerySlider.style.transform = `translateX(-${currentIndex * (slideWidth + gap)}px)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+            updateSliderPosition();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+            updateSliderPosition();
+        });
+
+        // Lightbox functionality
+        slides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                lightbox.style.display = 'block';
+                lightboxImg.src = slide.src;
+            });
+        });
+
+        if (closeLightbox) {
+            closeLightbox.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+        }
+
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                }
+            });
+        }
+    }
+
     // Feather Icons
     if (typeof feather !== 'undefined') {
         feather.replace();
