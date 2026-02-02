@@ -1,585 +1,170 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ľudová hudba Tomáša Boráka</title>
-
-<!-- Inter font -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --gold:#C9A24D;
-  --gold-light:#E5C97A;
-  --black:#0E0E0E;
-  --black-soft:#161616;
-  --white:#F5F5F5;
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--black);
-  color:var(--white);
-}
-
-a{text-decoration:none;color:inherit}
-
-/* ================= HEADER ================= */
-/* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Inter',sans-serif;
-  background:#000;
-  color:#fff;
-}
-
-/* ===== HEADER ===== */
-.site-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  z-index:100;
-  background:#000;
-}
-
-.nav-wrapper{
-  max-width:1400px;
-  margin:auto;
-  padding:18px 40px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo img{
-  height:38px;
-}
-
-/* menu */
-.nav-menu{
-  display:flex;
-  align-items:center;
-  gap:28px;
-}
-
-.nav-menu a{
-  font-size:15px;
-  font-weight:300;
-  color:#e5e5e5;
-  opacity:.9;
-  transition:.2s;
-}
-
-.nav-menu a:hover{
-  opacity:1;
-}
-
-.nav-icon{
-  display:flex;
-  align-items:center;
-}
-
-/* ===== HERO ===== */
-.hero{
-  position:relative;
-  min-height:100vh;
-  padding-top:90px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  overflow:hidden;
-}
-
-/* pozadie */
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      to right,
-      rgba(0,0,0,.85),
-      rgba(201,162,77,.55),
-      rgba(0,0,0,.85)
-    ),
-    url("hero.jpg") center/cover no-repeat;
-}
-
-/* obsah */
-.hero-content{
-  position:relative;
-  max-width:980px;
-  padding:0 20px;
-  z-index:2;
-}
-
-.hero h1{
-  font-size:64px;
-  font-weight:600;
-  line-height:1.1;
-  margin-bottom:24px;
-}
-
-.hero p{
-  font-size:16px;
-  font-weight:300;
-  color:#d2d2d2;
-  margin-bottom:48px;
-}
-
-/* tlačidlá */
-.hero-buttons{
-  display:flex;
-  justify-content:center;
-  gap:24px;
-  flex-wrap:wrap;
-}
-
-.btn-primary{
-  background:#FFD056;
-  color:#000;
-  padding:16px 36px;
-  border-radius:999px;
-  font-size:15px;
-  font-weight:600;
-  transition:.25s;
-}
-
-.btn-primary:hover{
-  background:#ffe08a;
-}
-
-.btn-outline{
-  border:1px solid rgba(255,255,255,.6);
-  padding:16px 34px;
-  border-radius:999px;
-  font-size:14px;
-  font-weight:600;
-  letter-spacing:.04em;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-
-.ext{
-  font-size:13px;
-}
-
-
-/* MOBILE */
-@media(max-width:900px){
-  .nav-links{
-    display:none;
-  }
-  .hamburger{
-    display:flex;
-  }
-}
-
-
-/* ================= SECTIONS ================= */
-section{
-  max-width:1200px;
-  margin:auto;
-  padding:120px 20px;
-}
-
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-}
-
-.hero h1{
-  font-size:clamp(2.5rem,6vw,4rem);
-  font-weight:600;
-  margin-bottom:24px;
-}
-
-.hero p{
-  max-width:520px;
-  font-weight:300;
-  margin-bottom:40px;
-}
-
-.btns{
-  display:flex;
-  gap:20px;
-}
-
-.btn{
-  padding:14px 30px;
-  border-radius:999px;
-  font-weight:600;
-  transition:.3s;
-}
-.btn-primary{
-  background:var(--gold);
-  color:#000;
-}
-.btn-primary:hover{
-  background:var(--gold-light);
-  transform:translateY(-2px);
-}
-.btn-secondary{
-  border:1px solid var(--gold);
-  color:var(--gold);
-}
-.btn-secondary:hover{
-  background:var(--gold);
-  color:#000;
-}
-
-/* ================= O NAS ================= */
-
-.about-section{
-  max-width:1200px;
-  margin:auto;
-  padding:140px 20px;
-}
-
-.about-text{
-  max-width:900px;
-  margin-bottom:80px;
-}
-
-.about-text h2{
-  font-size:48px;
-  font-weight:600;
-  margin-bottom:24px;
-}
-
-.about-text p{
-  font-size:16px;
-  font-weight:300;
-  line-height:1.8;
-  color:#cfcfcf;
-}
-
-/* členovia */
-.members{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:32px;
-}
-
-.member-card{
-  background:#1b1b1b;
-  border-radius:28px;
-  padding:40px 24px;
-  text-align:center;
-  transition:.3s ease;
-}
-
-.member-card:hover{
-  transform:translateY(-6px);
-}
-
-/* avatar */
-.avatar{
-  width:160px;
-  height:160px;
-  margin:0 auto 24px;
-  border-radius:50%;
-  padding:6px;
-  background:var(--gold);
-}
-
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-
-/* meno + nástroj */
-.member-card h3{
-  font-size:18px;
-  font-weight:600;
-  margin-bottom:6px;
-}
-
-.member-card span{
-  font-size:14px;
-  font-weight:300;
-  color:#b5b5b5;
-}
-
-/* mobile */
-@media(max-width:768px){
-  .about-text h2{
-    font-size:36px;
-  }
-}
-
-
-/* ================= GALLERY ================= */
-.gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-.gallery img{
-  width:100%;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-/* ===== lightbox ===== */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:200;
-}
-.lightbox img{
-  max-width:90%;
-  max-height:90%;
-}
-.lightbox.active{display:flex}
-
-/* ================= SLIDER ================= */
-.slider{
-  overflow:hidden;
-  position:relative;
-}
-.slides{
-  display:flex;
-  transition:.6s ease;
-}
-.slide{
-  min-width:100%;
-  padding:40px;
-  text-align:center;
-}
-.slide p{
-  font-weight:300;
-  margin-bottom:16px;
-}
-.slide span{
-  color:var(--gold);
-  font-weight:600;
-}
-
-/* ================= FOOTER ================= */
-footer{
-  padding:60px 20px;
-  text-align:center;
-  background:#0b0b0b;
-  font-size:14px;
-  opacity:.7;
-}
-
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-  .nav ul{display:none}
-  .hamburger{display:flex}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ľudová hudba Tomáša Boráka</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
-
 <body>
 
-<header class="site-header">
-  <div class="nav-wrapper">
-    <div class="logo">
-      <img src="logo.svg" alt="Ľudová hudba Tomáša Boráka">
-    </div>
+    <header class="header">
+        <div class="container">
+            <nav class="navigation">
+                <a href="#" class="logo">
+                    <img src="assets/images/lhtblogo.png" alt="Ľudová hudba Tomáša Boráka Logo">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-home"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg></a></li>
+                    <li><a href="#o-nas">O nás</a></li>
+                    <li><a href="#referencie">Referencie</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="#galeria">Galéria</a></li>
+                    <li><a href="https://www.facebook.com/lhtomasaboraka" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" /></svg></a></li>
+                </ul>
+                <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                    <i data-feather="menu"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
 
-    <nav class="nav-menu">
-      <a href="#home" class="nav-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-          <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1v-10.5z"
-            stroke="white" stroke-width="1.5"/>
-        </svg>
-      </a>
-      <a href="#about">O nás</a>
-      <a href="#reviews">Referencie</a>
-      <a href="#contact">Kontakt</a>
-      <a href="#gallery">Galéria</a>
-      <a href="https://facebook.com" target="_blank" class="nav-icon">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-          <path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.2l-.3 3h-1.9v7A10 10 0 0 0 22 12z"/>
-        </svg>
-      </a>
-    </nav>
-  </div>
-</header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Ľudová hudba Tomáša Boráka</h1>
+                <p>Oslavy, svadby, krstenia, plesy, zábavy, životné jubileá, odobierky, recepcie, firemné večierky, rauty a iné.</p>
+                <div class="hero-buttons">
+                    <a href="#kontakt" class="btn btn-primary">Kontaktujte nás</a>
+                    <a href="https://www.facebook.com/lhtomasaboraka" target="_blank" class="btn btn-secondary">
+                        Sledujte nás na Facebooku <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20=[
+                        ]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-external-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6h-6a2 2 0 0 0 -2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-6" /><path d="M11 13l9 -9" /><path d="M15 4h5v5" /></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-<section class="hero">
-  <div class="hero-bg"></div>
+        <section id="o-nas" class="about">
+            <div class="container">
+  <h2>O nás</h2>
+                <p class="about-text">
+                  Vznikli sme v roku 2013, na pôde cvičísk FS Detva ako skupina mladých nadšencov slovenského folklóru. Venujeme sa interpretácii tradičnej ľudovej hudby z rôznych regiónov Slovenska, predovšetkým z detvianskej oblasti, pričom náš repertoár postupne obohacujeme aj o iné hudobné žánre v rôznych úpravách. Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička a neskôr vo folklórnych súboroch Detva, Podpoľanec, Hriňovčan a Urpín, s ktorými sme účinkovali doma aj v zahraničí. Viacerí z nás sú dnes aktívnymi členmi hudobnej zložky FS Detva a FS Podpoľanec. Ako kolektív však najradšej prinášame radosť na svadbách, rodinných oslavách a kultúrnych podujatiach.
+                </p>
+                <div class="band-members">
+                    <div class="member-card">
+                        <img src="assets/images/tomas.jpg" alt="Tomáš Borák">
+                        <h3>Tomáš Borák</h3>
+                        <p>Husle</p>
+                    </div>
+                    <div class="member-card">
+                        <img src="assets/images/suster.jpg" alt="Martin Smutný">
+                        <h3>Martin Smutný</h3>
+                        <p>Husle</p>
+                    </div>
+                    <div class="member-card">
+                        <img src="assets/images/lenka.jpg" alt="Lenka Václavíková">
+                        <h3>Lenka Václavíková</h3>
+                        <p>Cimbal</p>
+                    </div>
+                    <div class="member-card">
+                        <img src="assets/images/janco.jpg" alt="Ján Budáč">
+                        <h3>Ján Budáč</h3>
+                        <p>Basa</p>
+                    </div>
+                    <div class="member-card">
+                        <img src="assets/images/roman.jpg" alt="Martin Václavik">
+                        <h3>Roman Lapín</h3>
+                        <p>Akordeón</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="hero-content">
-    <h1>Ľudová hudba Tomáša Boráka</h1>
+        <section id="referencie" class="testimonials">
+            <div class="container">
+                <h2>Referencie</h2>
+                <p>Spätná väzba od Vás je pre nás tou najväčšou odmenou.</p>
+                <div class="testimonial-slider">
+                    <div class="testimonial active">
+                        <div class="testimonial-content">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">Skvelá hudba, perfektná atmosféra a profesionálny prístup. Hostia boli nadšení od začiatku až do konca.</p>
+                            <p class="author">Martina & Peter</p>
+                            <p class="event">Svadba</p>
+                        </div>
+                    </div>
+                     <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">Ďakujeme za úžasnú zábavu na našej oslave. Všetci sa skvelo bavili!</p>
+                            <p class="author">Jana a Michal</p>
+                            <p class="event">Oslava 50-tky</p>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-content">
+                            <div class="stars">★★★★★</div>
+                            <p class="quote">Profesionáli s ľudským prístupom. Odporúčame všetkými desiatimi.</p>
+                            <p class="author">Rodina Kováčová</p>
+                            <p class="event">Rodinná oslava</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-dots"></div>
+            </div>
+        </section>
 
-    <p>
-      Oslavy, svadby, krstenia, plesy, zábavy, životné jubileá,
-      odobierky, recepcie, firemné večierky, rauty a iné.
-    </p>
+        <section id="kontakt" class="booking">
+            <div class="container">
+                <div class="booking-box">
+                    <h2>Rezervujte si nás na Vaše podujatie</h2>
+                    <p>Ponuku je možné ľubovoľne prispôsobiť Vašim požiadavkám a potrebám. Základom je pre nás úsmev, dobrá nálada a Vaša spokojnosť!</p>
+                    <div class="contact-info">
+                        <a href="mailto:lhtomasaboraka@gmail.com" class="contact-link">
+                            <span class="contact-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-mail"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" /><path d="M3 7l9 6l9 -6" /></svg>
+                            </span>
+                            <span class="contact-text">lhtomasaboraka@gmail.com</span>
+                        </a>
+                        <a href="tel:+421918477450" class="contact-link">
+                            <span class="contact-icon-wrapper">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-phone"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+                            </span>
+                            <span class="contact-text">+421 918 477 450</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <div class="hero-buttons">
-      <a href="#contact" class="btn-primary">Kontaktujte nás</a>
-      <a href="https://facebook.com" target="_blank" class="btn-outline">
-        SLEDUJTE NÁS NA FACEBOOKU
-        <span class="ext">↗</span>
-      </a>
-    </div>
-  </div>
-</section>
+        <section id="galeria" class="gallery">
+            <div class="gallery-grid">
+                <img src="assets/images/fotka1.jpg" alt="Galéria 1">
+                <img src="assets/images/fotka2.jpg" alt="Galéria 2">
+                <img src="assets/images/fotka3.jpg" alt="Galéria 3">
+                <img src="assets/images/fotka4.jpg" alt="Galéria 4">
+                <img src="assets/images/fotka5.jpg" alt="Galéria 5">
+                <img src="assets/images/fotka6.jpg" alt="Galéria 6">
+                <img src="assets/images/fotka7.jpg" alt="Galéria 7">
+                 <img src="assets/images/lhtbgroup.jpg" alt="Galéria 8">
+            </div>
+        </section>
+    </main>
 
+    <footer class="footer">
+        <div class="container">
+            <img src="assets/images/lhtblogo.png" alt="Logo" class="footer-logo">
+            <p>&copy; 2026 Ľudová hudba Tomáša Boráka</p>
+        </div>
+    </footer>
 
-<section id="about" class="about-section">
-  <div class="about-text">
-    <h2>O nás</h2>
-    <p>
-      Vznikli sme v roku 2013, na pôde cvičiska FS Detva ako skupina mladých
-      nadšencov slovenského folklóru. Venujeme sa interpretácii tradičnej
-      ľudovej hudby z rôznych regiónov Slovenska, predovšetkým z detvianskej
-      oblasti, pričom náš repertoár postupne obohacujeme aj o iné hudobné
-      žánre v rôznych úpravách.
-      <br><br>
-      Skúsenosti sme získavali už od detstva v súboroch Ratolesť a Hviezdička
-      a neskôr vo folklórnych súboroch Detva, Podpoľanec, Hriňovčan a Urpín,
-      s ktorými sme účinkovali doma aj v zahraničí.
-      <br><br>
-      Viacerí z nás sú dnes aktívnymi členmi hudobnej zložky FS Detva a
-      FS Podpoľanec. Ako kolektív však najradšej prinášame radosť na
-      svadbách, rodinných oslavách a kultúrnych podujatiach.
-    </p>
-  </div>
-
-  <div class="members">
-    <div class="member-card">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/300" alt="">
-      </div>
-      <h3>Tomáš Borák</h3>
-      <span>Husle</span>
-    </div>
-
-    <div class="member-card">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/300" alt="">
-      </div>
-      <h3>Martin Smutný</h3>
-      <span>Husle</span>
-    </div>
-
-    <div class="member-card">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/300" alt="">
-      </div>
-      <h3>Lenka Václavíková</h3>
-      <span>Cimbal</span>
-    </div>
-
-    <div class="member-card">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/300" alt="">
-      </div>
-      <h3>Ján Budáč</h3>
-      <span>Basa</span>
-    </div>
-
-    <div class="member-card">
-      <div class="avatar">
-        <img src="https://via.placeholder.com/300" alt="">
-      </div>
-      <h3>Martin Václavik</h3>
-      <span>Akordeón</span>
-    </div>
-  </div>
-</section>
-
-
-<section id="gallery">
-  <div class="gallery">
-    <img src="https://via.placeholder.com/600x400" alt="">
-    <img src="https://via.placeholder.com/600x400" alt="">
-    <img src="https://via.placeholder.com/600x400" alt="">
-    <img src="https://via.placeholder.com/600x400" alt="">
-  </div>
-</section>
-
-<section id="reviews">
-  <div class="slider">
-    <div class="slides" id="slides">
-      <div class="slide">
-        <p>⭐⭐⭐⭐⭐ Úžasná atmosféra a profesionálny prístup.</p>
-        <span>Svadba</span>
-      </div>
-      <div class="slide">
-        <p>⭐⭐⭐⭐⭐ Hudba, na ktorú budeme dlho spomínať.</p>
-        <span>Oslava</span>
-      </div>
-      <div class="slide">
-        <p>⭐⭐⭐⭐⭐ Autentické a citlivé prevedenie folklóru.</p>
-        <span>Krstiny</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2 style="color:var(--gold);margin-bottom:20px">Kontakt</h2>
-  <p>Email: info@ludovahudba.sk<br>Tel: +421 XXX XXX XXX</p>
-</section>
-
-</main>
-
-<footer>
-© 2026 Ľudová hudba Tomáša Boráka
-</footer>
-
-<!-- ===== lightbox ===== -->
-<div class="lightbox" id="lightbox">
-  <img src="" alt="">
-</div>
-
-<script>
-
-/* hamburger + X animácia */
-const ham = document.getElementById('hamburger');
-const menu = document.getElementById('mobileMenu');
-
-ham.addEventListener('click', () => {
-  ham.classList.toggle('active');
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-});
-
-
-
-/* lightbox */
-const imgs=document.querySelectorAll('.gallery img');
-const lightbox=document.getElementById('lightbox');
-const lightImg=lightbox.querySelector('img');
-
-imgs.forEach(img=>{
-  img.onclick=()=>{
-    lightImg.src=img.src;
-    lightbox.classList.add('active');
-  }
-});
-lightbox.onclick=()=>lightbox.classList.remove('active');
-
-/* slider */
-let index=0;
-const slides=document.getElementById('slides');
-setInterval(()=>{
-  index=(index+1)%3;
-  slides.style.transform=`translateX(-${index*100}%)`;
-},4000);
-</script>
-
+    <script src="assets/js/script.js"></script>
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>
